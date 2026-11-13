@@ -5,7 +5,7 @@ const allowedOrigin = process.env.FRONTEND_ORIGIN || "http://localhost:5173";
 // Temporary in-memory data keeps the API usable while a database is being selected.
 const questions = [];
 
-const sendJson = (response, status, body) => {
+const sendJson = (response, status,  body) => {
   response.writeHead(status, {
     "Content-Type": "application/json; charset=utf-8",
     "Access-Control-Allow-Origin": allowedOrigin,
