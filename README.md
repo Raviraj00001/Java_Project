@@ -1,16 +1,35 @@
-# React + Vite
+# CodeArena
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+CodeArena is split into two independently runnable applications:
 
-Currently, two official plugins are available:
+- `frontend/` contains the existing React + Vite product UI.
+- `backend/` contains the Node.js HTTP API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
 
-## React Compiler
+Start the API in one terminal:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+cd backend
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+Start the frontend in another terminal:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```sh
+cd frontend
+npm install
+npm run dev
+```
+
+Vite proxies `/api` requests to `http://localhost:4000`. The API currently provides
+`GET /api/health`, `GET /api/questions`, and `POST /api/questions`. Question data
+is in memory and resets when the API restarts; the frontend continues to use the
+existing mock data until its screens are connected to these endpoints.
+
+## Build the frontend
+
+```sh
+cd frontend
+npm run build
+```
